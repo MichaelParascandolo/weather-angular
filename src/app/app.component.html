@@ -14,7 +14,6 @@
         <div class="sbl-circ"></div>
       </button>
     </div>
-
     <button class="currentLocation" onclick="getLocation()">
       Current Location
       <i
@@ -48,7 +47,7 @@
         Feels Like: {{ weatherData.main.feels_like | number : "1.0-0" }}°F
       </div>
       <!-- toggle for F and C -->
-      <!-- <label class="toggle" hidden>
+      <label class="toggle" hidden>
         <input
           type="checkbox"
           id="check"
@@ -57,17 +56,8 @@
         />
         <span class="slider"></span>
         <span class="labels" data-on="°C" data-off="°F"></span>
-      </label> -->
+      </label>
       <hr />
-      <!-- <img
-        [src]="
-          'https://openweathermap.org/img/wn/' +
-          weatherData.weather[0].icon +
-          '.png'
-        "
-        alt=""
-        class="icon"
-      /> -->
       <div style="display: flex; justify-content: space-between">
         <div>
           <div class="wind">Wind Speed: {{ weatherData.wind.speed }} mp/h</div>
