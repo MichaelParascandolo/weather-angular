@@ -5,11 +5,13 @@ body {
   align-items: center;
   min-height: 100vh;
   /* background-image: url("https://source.unsplash.com/1600x900/?landscape?weather"); */
-  background-image: url("../src/assets/bg2.jpg");
+  background-image: url("../src/assets/bg3.jpg");
   font-family: "Open Sans", sans-serif;
   background-size: cover;
+  background-repeat: no-repeat;
   background-attachment: scroll;
   overflow-y: hidden;
+  user-select: none;
 }
 .container {
   text-align: center;

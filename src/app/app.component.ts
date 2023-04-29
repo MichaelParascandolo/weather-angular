@@ -42,7 +42,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  public search = (inputValue: string | number, currentLocation: boolean) => {
+  public search = (inputValue: any, currentLocation: boolean) => {
     if (inputValue != '') {
       this.showLoading = true;
       console.log(inputValue);
@@ -53,10 +53,11 @@ export class AppComponent {
       if (currentLocation == true) {
         searchHow = searchHow = '&lat=' + latitude + '&lon=' + longitude;
       } else {
-        if (typeof inputValue === 'number') {
-          searchHow = 'zip=';
-        } else {
+        if (isNaN(inputValue)) {
+          // does not working if we type cast inputValue
           searchHow = 'q=';
+        } else {
+          searchHow = 'zip=';
         }
       }
       if (this.imperial == false) {
@@ -83,6 +84,7 @@ export class AppComponent {
             console.log('SOMETHING WENT WRONG');
             this.placeHolder = 'CITY NOT FOUND!';
             this.inputValue = '';
+            this.weatherData = undefined;
             return error;
           })
         )
