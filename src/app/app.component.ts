@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
 
 interface WeatherData {
   name: string;
@@ -36,13 +35,15 @@ export class AppComponent {
   imperial: boolean = false;
   inputValue = '';
   placeHolder = 'Search City | ZIP Code (US)';
+  tempUnit = '';
+  speedUnit = '';
   // currentLocation: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   public search = (inputValue: string | number, currentLocation: boolean) => {
     if (inputValue != '') {
-      this.weatherData = undefined;
+      // this.weatherData = undefined;
       console.log(inputValue);
       let units: string;
       let searchHow: string;
@@ -59,8 +60,12 @@ export class AppComponent {
       }
       if (this.imperial == false) {
         units = 'imperial';
+        this.tempUnit = '°F';
+        this.speedUnit = 'mp/h';
       } else {
         units = 'metric';
+        this.tempUnit = '°C';
+        this.speedUnit = 'kp/h';
       }
 
       const apiUrl = `https://api.openweathermap.org/data/2.5/weather?${searchHow}${inputValue}&units=${units}&appid=${this.apiKey}`;
@@ -82,4 +87,8 @@ export class AppComponent {
         .subscribe();
     }
   };
+  ngOnInit() {
+    this.inputValue = 'Tuckerton';
+    this.search(this.inputValue, false);
+  }
 }

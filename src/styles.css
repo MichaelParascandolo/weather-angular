@@ -23,6 +23,7 @@ body {
   margin-top: -20px;
   margin-bottom: 0.4em;
   font-size: 50px;
+  font-weight: bold;
 }
 .heading {
   display: flex;
@@ -40,8 +41,8 @@ body {
   color: white;
   padding: 2em;
   border-radius: 20px;
-  width: 100%;
-  max-width: 400px;
+  width: 400px;
+  /* max-width: 400px; */
   border: 2px solid #2196f3;
   -webkit-box-shadow: 0px 15px 138px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 15px 138px -8px rgba(0, 0, 0, 0.75);
@@ -89,7 +90,7 @@ button {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
-  width: 75px;
+  width: 70px;
 }
 button:hover {
   background-color: #2196f3;
@@ -129,6 +130,7 @@ hr {
 }
 footer {
   margin-top: 10px;
+  margin-bottom: -20px;
   color: white;
   text-align: center;
   font-family: "Open Sans", sans-serif;
@@ -136,7 +138,7 @@ footer {
 /* SWITCH FOR C & F */
 
 .toggle {
-  --width: 100px;
+  --width: 150px;
   --height: calc(var(--width) / 3);
   opacity: 100%;
   position: relative;
@@ -185,7 +187,7 @@ footer {
   top: 8px;
   width: 100%;
   height: 100%;
-  font-size: 20px;
+  font-size: 30px;
   font-family: sans-serif;
 }
 .toggle .labels::after {

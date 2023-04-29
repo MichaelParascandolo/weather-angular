@@ -24,15 +24,36 @@
     </button>
     <!-- main weather content -->
     <div *ngIf="weatherData">
-      <hr />
-      <h2 style="letter-spacing: 3px; margin-top: -5px">
+      <!-- <hr /> -->
+      <h2 style="letter-spacing: 3px; margin-bottom: 0px">
+        <span style="font-size: 15px; font-weight: 100">
+          {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
+          <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
+        </span>
         {{ weatherData.name }}, {{ weatherData.sys.country }}
+        <span style="font-size: 15px; font-weight: 100">
+          <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
+          {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit }}
+        </span>
       </h2>
+      <hr />
       <div class="heading">
         <div style="margin-top: auto">
-          <h1 class="temp">{{ weatherData.main.temp | number : "1.0-0" }}°F</h1>
+          <h1 class="temp">
+            {{ weatherData.main.temp | number : "1.0-0" }}{{ tempUnit }}
+          </h1>
+          <div class="feelsLike" style="margin-top: -20px; margin-bottom: 20px">
+            Feels Like: {{ weatherData.main.feels_like | number : "1.0-0"
+            }}{{ tempUnit }}
+          </div>
         </div>
-        <div style="margin-bottom: auto">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            text-transform: capitalize;
+          "
+        >
           <img
             [src]="
               'https://openweathermap.org/img/wn/' +
@@ -41,45 +62,54 @@
             "
             alt=""
             class="icon"
+            style="margin-right: auto; margin-left: auto"
           />
+          {{ weatherData.weather[0].description }}
+          <br />
+          Humidity: {{ weatherData.main.humidity }}%
         </div>
       </div>
-      <div class="feelsLike" style="margin-top: -20px; margin-bottom: 20px">
-        Feels Like: {{ weatherData.main.feels_like | number : "1.0-0" }}°F
-      </div>
-      <!-- toggle for F and C -->
-      <label class="toggle" (click)="search(inputValue, false)">
-        <input type="checkbox" id="check" name="check" [(ngModel)]="imperial" />
-        <span class="slider"></span>
-        <span class="labels" data-on="°C" data-off="°F"></span>
-      </label>
       <hr />
       <div style="display: flex; justify-content: space-between">
         <div>
-          <div class="wind">Wind Speed: {{ weatherData.wind.speed }} mp/h</div>
+          <div class="wind">
+            Wind Speed: {{ weatherData.wind.speed | number : "1.0-0"
+            }}{{ speedUnit }}
+          </div>
           <div class="gust">
-            Wind Gust: {{ weatherData.wind.gust }} mp/h
+            Wind Gust: {{ weatherData.wind.gust | number : "1.0-0"
+            }}{{ speedUnit }}
             <i class="fa-solid fa-wind fa-lg"></i>
           </div>
         </div>
         <div>
-          <div class="description">
+          <!-- <div class="description">
             {{ weatherData.weather[0].description }}
-          </div>
-          <div class="humidity">Humidity: {{ weatherData.main.humidity }}%</div>
+          </div> -->
+          <!-- <div class="humidity">Humidity: {{ weatherData.main.humidity }}%</div> -->
+          <label class="toggle" (click)="search(inputValue, false)">
+            <input
+              type="checkbox"
+              id="check"
+              name="check"
+              [(ngModel)]="imperial"
+            />
+            <span class="slider"></span>
+            <span class="labels" data-on="°C" data-off="°F"></span>
+          </label>
         </div>
       </div>
-
       <hr />
-      <div class="maxTemp">
+      <!-- <div class="maxTemp">
         <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
-        Max: {{ weatherData.main.temp_max | number : "1.0-0" }}°F
+        Max: {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit }}
       </div>
       <div class="minTemp">
         <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
-        Min: {{ weatherData.main.temp_min | number : "1.0-0" }}°F
+        Min: {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
       </div>
+      <hr /> -->
     </div>
+    <app-footer />
   </div>
 </div>
-<!-- <app-footer *ngIf="weatherData" /> -->
