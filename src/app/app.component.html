@@ -24,12 +24,28 @@
     </button>
     <!-- main weather content -->
     <div *ngIf="weatherData">
-      <h2 class="city">
+      <hr />
+      <h2 style="letter-spacing: 3px; margin-top: -5px">
         {{ weatherData.name }}, {{ weatherData.sys.country }}
       </h2>
-      <h1 class="temp">{{ weatherData.main.temp }}°F</h1>
+      <div class="heading">
+        <div style="margin-top: auto">
+          <h1 class="temp">{{ weatherData.main.temp | number : "1.0-0" }}°F</h1>
+        </div>
+        <div style="margin-bottom: auto">
+          <img
+            [src]="
+              'https://openweathermap.org/img/wn/' +
+              weatherData.weather[0].icon +
+              '.png'
+            "
+            alt=""
+            class="icon"
+          />
+        </div>
+      </div>
       <div class="feelsLike" style="margin-top: -20px; margin-bottom: 20px">
-        Feels Like: {{ weatherData.main.feels_like }}°F
+        Feels Like: {{ weatherData.main.feels_like | number : "1.0-0" }}°F
       </div>
       <!-- toggle for F and C -->
       <!-- <label class="toggle" hidden>
@@ -43,7 +59,7 @@
         <span class="labels" data-on="°C" data-off="°F"></span>
       </label> -->
       <hr />
-      <img
+      <!-- <img
         [src]="
           'https://openweathermap.org/img/wn/' +
           weatherData.weather[0].icon +
@@ -51,16 +67,32 @@
         "
         alt=""
         class="icon"
-      />
+      /> -->
+      <div style="display: flex; justify-content: space-between">
+        <div>
+          <div class="wind">Wind Speed: {{ weatherData.wind.speed }} mp/h</div>
+          <div class="gust">
+            Wind Gust: {{ weatherData.wind.gust }} mp/h
+            <i class="fa-solid fa-wind fa-lg"></i>
+          </div>
+        </div>
+        <div>
+          <div class="description">
+            {{ weatherData.weather[0].description }}
+          </div>
+          <div class="humidity">Humidity: {{ weatherData.main.humidity }}%</div>
+        </div>
+      </div>
 
-      <div class="description">{{ weatherData.weather[0].description }}</div>
-      <div class="humidity">Humidity: {{ weatherData.main.humidity }}%</div>
       <hr />
-      <div class="wind">Wind Speed: {{ weatherData.wind.speed }} mp/h</div>
-      <div class="gust">Wind Gust: {{ weatherData.wind.gust }} mp/h</div>
-      <hr />
-      <div class="maxTemp">Max: {{ weatherData.main.temp_max }}°F</div>
-      <div class="minTemp">Min: {{ weatherData.main.temp_min }}°F</div>
+      <div class="maxTemp">
+        <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
+        Max: {{ weatherData.main.temp_max | number : "1.0-0" }}°F
+      </div>
+      <div class="minTemp">
+        <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
+        Min: {{ weatherData.main.temp_min | number : "1.0-0" }}°F
+      </div>
     </div>
   </div>
 </div>

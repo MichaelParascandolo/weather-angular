@@ -29,7 +29,6 @@ interface WeatherData {
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-// https://api.openweathermap.org/data/2.5/weather?q=Tuckerton&units=imperial&appid=6e21e21d00dac27b8e466eb450211833
 export class AppComponent {
   apiKey: string = '6e21e21d00dac27b8e466eb450211833';
   weatherData: WeatherData | undefined;
@@ -50,4 +49,8 @@ export class AppComponent {
       )
       .subscribe();
   };
+  // used for testing
+  ngOnInit() {
+    this.search('New York', false);
+  }
 }
