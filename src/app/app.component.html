@@ -8,6 +8,7 @@
         class="search-bar"
         [(ngModel)]="inputValue"
         placeholder="{{ placeHolder }}"
+        (keyup.enter)="search(inputValue, false)"
       />
       <button (click)="search(inputValue, false)">
         <i class="fa-solid fa-magnifying-glass fa-xl"></i>
