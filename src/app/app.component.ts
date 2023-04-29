@@ -33,6 +33,7 @@ export class AppComponent {
   apiKey: string = '6e21e21d00dac27b8e466eb450211833';
   weatherData: WeatherData | undefined;
   imperial: boolean = false;
+  showLoading: boolean = false;
   inputValue = '';
   placeHolder = 'Search City | ZIP Code (US)';
   tempUnit = '';
@@ -43,7 +44,7 @@ export class AppComponent {
 
   public search = (inputValue: string | number, currentLocation: boolean) => {
     if (inputValue != '') {
-      // this.weatherData = undefined;
+      this.showLoading = true;
       console.log(inputValue);
       let units: string;
       let searchHow: string;
@@ -73,10 +74,12 @@ export class AppComponent {
         .get<WeatherData>(apiUrl)
         .pipe(
           tap((response: WeatherData | undefined) => {
+            this.showLoading = false;
             this.placeHolder = 'Search City | ZIP Code (US)';
             this.weatherData = response;
           }),
           catchError((error: any) => {
+            this.showLoading = false;
             console.log('SOMETHING WENT WRONG');
             this.placeHolder = 'CITY NOT FOUND!';
             this.inputValue = '';
@@ -87,8 +90,8 @@ export class AppComponent {
         .subscribe();
     }
   };
-  ngOnInit() {
-    this.inputValue = 'Tuckerton';
-    this.search(this.inputValue, false);
-  }
+  // ngOnInit() {
+  //   this.inputValue = 'Tuckerton';
+  //   this.search(this.inputValue, false);
+  // }
 }

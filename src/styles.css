@@ -6,11 +6,9 @@ body {
   min-height: 100vh;
   /* background-image: url("https://source.unsplash.com/1600x900/?landscape?weather"); */
   background-image: url("../src/assets/bg2.jpg");
-  background-color: black;
   font-family: "Open Sans", sans-serif;
-  background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   overflow-y: hidden;
 }
 .container {
@@ -214,12 +212,12 @@ footer {
 
 /* LOADING ICON */
 .sbl-circ {
-  display: none;
+  /* display: none; */
   text-align: center;
   align-items: center;
-  height: 20px;
-  width: 20px;
-  color: white;
+  height: 30px;
+  width: 30px;
+  color: #2196f3;
   position: relative;
   /* display: inline-block; */
   border: 5px solid;

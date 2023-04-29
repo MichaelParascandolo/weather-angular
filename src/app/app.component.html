@@ -12,7 +12,6 @@
       />
       <button (click)="search(inputValue, false)">
         <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-        <div class="sbl-circ"></div>
       </button>
     </div>
     <button class="currentLocation" onclick="getLocation()">
@@ -37,6 +36,7 @@
         </span>
       </h2>
       <hr />
+      <!-- <div class="sbl-circ" style="display: block"></div> -->
       <div class="heading">
         <div style="margin-top: auto">
           <h1 class="temp">
@@ -109,6 +109,10 @@
         Min: {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
       </div>
       <hr /> -->
+    </div>
+    <!-- loading icon -->
+    <div *ngIf="showLoading" style="display: flex; justify-content: center">
+      <div class="sbl-circ"></div>
     </div>
     <app-footer />
   </div>
