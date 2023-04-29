@@ -2,6 +2,7 @@
   <div class="card">
     <app-logo />
     <!-- <hr /> -->
+    <!-- search bar and buttons -->
     <div class="search">
       <input
         type="text"
@@ -11,7 +12,8 @@
         (keyup.enter)="search(inputValue, false)"
       />
       <button (click)="search(inputValue, false)">
-        <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+        <i *ngIf="!showLoading" class="fa-solid fa-magnifying-glass fa-xl"></i>
+        <div *ngIf="showLoading" class="sbl-circ"></div>
       </button>
     </div>
     <button class="currentLocation" onclick="getLocation()">
@@ -36,7 +38,6 @@
         </span>
       </h2>
       <hr />
-      <!-- <div class="sbl-circ" style="display: block"></div> -->
       <div class="heading">
         <div style="margin-top: auto">
           <h1 class="temp">
@@ -83,10 +84,6 @@
           </div>
         </div>
         <div>
-          <!-- <div class="description">
-            {{ weatherData.weather[0].description }}
-          </div> -->
-          <!-- <div class="humidity">Humidity: {{ weatherData.main.humidity }}%</div> -->
           <label class="toggle" (click)="search(inputValue, false)">
             <input
               type="checkbox"
@@ -100,19 +97,6 @@
         </div>
       </div>
       <hr />
-      <!-- <div class="maxTemp">
-        <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
-        Max: {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit }}
-      </div>
-      <div class="minTemp">
-        <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
-        Min: {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
-      </div>
-      <hr /> -->
-    </div>
-    <!-- loading icon -->
-    <div *ngIf="showLoading" style="display: flex; justify-content: center">
-      <div class="sbl-circ"></div>
     </div>
     <app-footer />
   </div>
