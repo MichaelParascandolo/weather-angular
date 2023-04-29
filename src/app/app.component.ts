@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
 
 interface WeatherData {
   name: string;
@@ -32,25 +33,53 @@ interface WeatherData {
 export class AppComponent {
   apiKey: string = '6e21e21d00dac27b8e466eb450211833';
   weatherData: WeatherData | undefined;
+  imperial: boolean = false;
   inputValue = '';
-  minTemp = '';
+  placeHolder = 'Search City | ZIP Code (US)';
+  // currentLocation: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   public search = (inputValue: string | number, currentLocation: boolean) => {
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&units=imperial&appid=${this.apiKey}`;
+    console.log(inputValue);
+    let units: string;
+    let searchHow: string;
+    let latitude;
+    let longitude;
+    if (currentLocation == true) {
+      searchHow = searchHow = '&lat=' + latitude + '&lon=' + longitude;
+    } else {
+      if (typeof inputValue === 'number') {
+        searchHow = 'zip=';
+      } else {
+        searchHow = 'q=';
+      }
+    }
+    if (this.imperial == false) {
+      units = 'imperial';
+    } else {
+      units = 'metric';
+    }
+
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?${searchHow}${inputValue}&units=${units}&appid=${this.apiKey}`;
     this.http
       .get<WeatherData>(apiUrl)
       .pipe(
         tap((response: WeatherData | undefined) => {
           this.weatherData = response;
-          // console.log(this.weatherData);
+        }),
+        catchError((error: any) => {
+          console.log('SOMETHING WENT WRONG');
+          this.placeHolder = 'CITY NOT FOUND!';
+          this.inputValue = '';
+          return error;
         })
       )
+
       .subscribe();
   };
   // used for testing
   ngOnInit() {
-    this.search('New York', false);
+    // this.search('New York', false);
   }
 }

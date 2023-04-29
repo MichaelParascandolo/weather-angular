@@ -7,7 +7,7 @@
         type="text"
         class="search-bar"
         [(ngModel)]="inputValue"
-        placeholder="Search City | ZIP Code (US)"
+        placeholder="{{ placeHolder }}"
       />
       <button (click)="search(inputValue, false)">
         <i class="fa-solid fa-magnifying-glass fa-xl"></i>
@@ -47,13 +47,8 @@
         Feels Like: {{ weatherData.main.feels_like | number : "1.0-0" }}°F
       </div>
       <!-- toggle for F and C -->
-      <label class="toggle" hidden>
-        <input
-          type="checkbox"
-          id="check"
-          name="check"
-          onclick="weather.search()"
-        />
+      <label class="toggle" (click)="search(inputValue, false)">
+        <input type="checkbox" id="check" name="check" [(ngModel)]="imperial" />
         <span class="slider"></span>
         <span class="labels" data-on="°C" data-off="°F"></span>
       </label>
@@ -86,4 +81,4 @@
     </div>
   </div>
 </div>
-<app-footer *ngIf="weatherData" />
+<!-- <app-footer *ngIf="weatherData" /> -->
