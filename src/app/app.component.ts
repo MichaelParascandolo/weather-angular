@@ -46,7 +46,8 @@ export class AppComponent {
   public search = (inputValue: any, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
       this.showLoading = true;
-      console.log(inputValue);
+      // console.log(inputValue);
+      // console.log(this.imperial);
       let units: string;
       let searchHow: string;
       if (currentLocation == true) {
@@ -107,6 +108,10 @@ export class AppComponent {
     } else {
       alert('Geolocation is not supported by this browser.');
     }
+  };
+  public flipSwitch = () => {
+    this.imperial = !this.imperial;
+    this.search(this.inputValue, false);
   };
   // ngOnInit() {
   //   this.inputValue = 'Tuckerton';

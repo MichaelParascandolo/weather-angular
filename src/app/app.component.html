@@ -80,13 +80,14 @@
             <i class="fa-solid fa-wind fa-lg"></i>
           </div>
         </div>
+        <!-- unit slider -->
         <div>
-          <label class="toggle" (click)="search(inputValue, false)">
+          <label class="toggle">
             <input
               type="checkbox"
               id="check"
               name="check"
-              [(ngModel)]="imperial"
+              (change)="flipSwitch()"
             />
             <span class="slider"></span>
             <span class="labels" data-on="°C" data-off="°F"></span>
