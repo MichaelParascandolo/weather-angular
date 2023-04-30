@@ -37,7 +37,7 @@ h2 {
   background-image: linear-gradient(
     180deg,
     hsl(0, 0%, 0%) 0%,
-    hsl(344deg 0% 15%) 70%,
+    hsl(344deg 0% 15%) 50%,
     hsl(0deg 0% 28%) 100%
   );
   color: white;
@@ -56,10 +56,6 @@ h2 {
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
-}
-
-.description {
-  text-transform: capitalize;
 }
 button {
   margin: 0.5em;
@@ -133,7 +129,7 @@ hr {
 footer {
   margin-top: 10px;
   margin-bottom: -20px;
-  color: white;
+  color: rgb(206, 204, 204);
   text-align: center;
   font-size: 15px;
 }
@@ -186,33 +182,24 @@ footer {
 }
 .toggle .labels {
   position: absolute;
-  top: 8px;
+  top: 3px;
   width: 100%;
   height: 100%;
   font-size: 25px;
+  font-weight: bold;
 }
 .toggle .labels::after {
   content: attr(data-off);
   position: absolute;
   right: 5px;
   color: white;
-  opacity: 1;
 }
 .toggle .labels::before {
   content: attr(data-on);
   position: absolute;
   left: 5px;
   color: #ffffff;
-  opacity: 0;
 }
-.toggle input:checked ~ .labels::after {
-  opacity: 0;
-}
-
-.toggle input:checked ~ .labels::before {
-  opacity: 1;
-}
-
 /* LOADING ICON */
 .sbl-circ {
   height: 20px;

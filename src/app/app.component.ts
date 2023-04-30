@@ -113,8 +113,8 @@ export class AppComponent {
     this.imperial = !this.imperial;
     this.search(this.inputValue, false);
   };
-  // ngOnInit() {
-  //   this.inputValue = 'Tuckerton';
-  //   this.search(this.inputValue, false);
-  // }
+  ngOnInit() {
+    this.inputValue = 'Tuckerton';
+    this.search(this.inputValue, false);
+  }
 }
