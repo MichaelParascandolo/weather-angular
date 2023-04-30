@@ -78,6 +78,10 @@ export class AppComponent {
             this.showLoading = false;
             this.placeHolder = 'Search City | ZIP Code (US)';
             this.weatherData = response;
+            if ((inputValue = ' ')) {
+              // if using current location, set input to city name
+              this.inputValue = this.weatherData?.name + '';
+            }
           }),
           catchError((error: any) => {
             this.showLoading = false;
