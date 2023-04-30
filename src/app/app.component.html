@@ -27,15 +27,15 @@
     <div *ngIf="weatherData">
       <!-- <hr /> -->
       <h2 style="letter-spacing: 3px; margin-bottom: 0px">
-        <span style="font-size: 15px; font-weight: 100">
+        <!-- <span style="font-size: 15px; font-weight: 100">
           {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
           <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
-        </span>
+        </span> -->
         {{ weatherData.name }}, {{ weatherData.sys.country }}
-        <span style="font-size: 15px; font-weight: 100">
+        <!-- <span style="font-size: 15px; font-weight: 100">
           <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
           {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit }}
-        </span>
+        </span> -->
       </h2>
       <hr />
       <div class="heading">
@@ -46,6 +46,11 @@
           <div class="feelsLike" style="margin-top: -20px; margin-bottom: 20px">
             Feels Like: {{ weatherData.main.feels_like | number : "1.0-0"
             }}{{ tempUnit }}
+            <br />
+            <i class="fa-solid fa-temperature-arrow-down fa-sm"></i
+            >{{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }} -
+            {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit
+            }}<i class="fa-solid fa-temperature-arrow-up fa-sm"></i>
           </div>
         </div>
         <div

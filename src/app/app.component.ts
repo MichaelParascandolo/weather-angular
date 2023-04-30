@@ -30,7 +30,7 @@ interface WeatherData {
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this in .env file
+  apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this later in .env
   weatherData: WeatherData | undefined;
   imperial: boolean = false;
   showLoading: boolean = false;
