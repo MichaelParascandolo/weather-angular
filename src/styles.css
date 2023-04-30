@@ -19,11 +19,15 @@ body {
   justify-content: center;
   align-content: center;
 }
-.temp {
+h1 {
   margin-top: -20px;
   margin-bottom: 0.4em;
   font-size: 50px;
   font-weight: bold;
+}
+h2 {
+  letter-spacing: 3px;
+  margin-bottom: 0px;
 }
 .heading {
   display: flex;
