@@ -16,7 +16,7 @@
         <div *ngIf="showLoading" class="sbl-circ"></div>
       </button>
     </div>
-    <button class="currentLocation" onclick="getLocation()">
+    <button class="currentLocation" (click)="getLocation()">
       Current Location
       <i
         class="fa-solid fa-location-arrow fa-lg"

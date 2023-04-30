@@ -30,28 +30,28 @@ interface WeatherData {
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  apiKey: string = '6e21e21d00dac27b8e466eb450211833';
+  apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this in .env file
   weatherData: WeatherData | undefined;
   imperial: boolean = false;
   showLoading: boolean = false;
-  inputValue = '';
+  latitude: number | undefined = undefined;
+  longitude: number | undefined = undefined;
   placeHolder = 'Search City | ZIP Code (US)';
+  inputValue = '';
   tempUnit = '';
   speedUnit = '';
-  // currentLocation: boolean = false;
 
   constructor(private http: HttpClient) {}
 
   public search = (inputValue: any, currentLocation: boolean) => {
-    if (inputValue != '') {
+    if (inputValue != '' || currentLocation) {
       this.showLoading = true;
       console.log(inputValue);
       let units: string;
       let searchHow: string;
-      let latitude;
-      let longitude;
       if (currentLocation == true) {
-        searchHow = searchHow = '&lat=' + latitude + '&lon=' + longitude;
+        searchHow = searchHow =
+          '&lat=' + this.latitude + '&lon=' + this.longitude;
       } else {
         if (isNaN(inputValue)) {
           // does not working if we type cast inputValue
@@ -90,6 +90,18 @@ export class AppComponent {
         )
 
         .subscribe();
+    }
+  };
+  // gets the users location from the browser
+  public getLocation = () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        this.search(this.inputValue, true);
+      });
+    } else {
+      alert('Geolocation is not supported by this browser.');
     }
   };
   // ngOnInit() {
