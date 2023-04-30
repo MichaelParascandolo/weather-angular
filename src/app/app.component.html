@@ -27,19 +27,11 @@
     <div *ngIf="weatherData">
       <!-- <hr /> -->
       <h2 style="letter-spacing: 3px; margin-bottom: 0px">
-        <!-- <span style="font-size: 15px; font-weight: 100">
-          {{ weatherData.main.temp_min | number : "1.0-0" }}{{ tempUnit }}
-          <i class="fa-solid fa-temperature-arrow-down fa-lg"></i>
-        </span> -->
         {{ weatherData.name }}, {{ weatherData.sys.country }}
-        <!-- <span style="font-size: 15px; font-weight: 100">
-          <i class="fa-solid fa-temperature-arrow-up fa-lg"></i>
-          {{ weatherData.main.temp_max | number : "1.0-0" }}{{ tempUnit }}
-        </span> -->
       </h2>
       <hr />
       <div class="heading">
-        <div style="margin-top: 35px">
+        <div style="margin-top: 30px">
           <h1 class="temp">
             {{ weatherData.main.temp | number : "1.0-0" }}{{ tempUnit }}
           </h1>
