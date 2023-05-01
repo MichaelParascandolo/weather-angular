@@ -4,6 +4,10 @@ import { catchError, tap } from 'rxjs/operators';
 
 interface WeatherData {
   name: string;
+  coord: {
+    lat: number;
+    lon: number;
+  };
   main: {
     temp: number;
     feels_like: number;
@@ -79,6 +83,11 @@ export class AppComponent {
             this.showLoading = false;
             this.placeHolder = 'Search City | ZIP Code (US)';
             this.weatherData = response;
+            this.longitude = this.weatherData?.coord.lon;
+            this.latitude = this.weatherData?.coord.lat;
+            // console.log(response);
+            // console.log(response?.coord.lon);
+            // console.log(response?.coord.lat);
             if ((inputValue = ' ')) {
               // if using current location, set input to city name
               this.inputValue = this.weatherData?.name + '';
@@ -115,11 +124,11 @@ export class AppComponent {
   };
   public forecast = () => {
     const count = 7;
-    const apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?lat=44.34&lon=10.99&cnt=7&appid=6e21e21d00dac27b8e466eb450211833`;
+    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitude}&lon=${this.longitude}&cnt=${count}&appid=${this.apiKey}`;
     this.http
-      .get<WeatherData>(apiUrl)
+      .get<any>(apiUrl)
       .pipe(
-        tap((response: WeatherData | undefined) => {
+        tap((response: any) => {
           console.log(response);
         }),
         catchError((error: any) => {
