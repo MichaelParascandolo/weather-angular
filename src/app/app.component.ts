@@ -49,20 +49,20 @@ export class AppComponent {
 
   public search = (inputValue: string, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
+      // makes sure input is not null and current location was not pressed
       this.showLoading = true;
-      // console.log(inputValue);
-      // console.log(this.imperial);
       let units: string;
       let searchHow: string;
       if (currentLocation == true) {
+        // if current location was pressed, get lat and long
         searchHow = searchHow =
           '&lat=' + this.latitude + '&lon=' + this.longitude;
       } else {
         if (isNaN(parseInt(inputValue))) {
-          // does not working if we type cast inputValue
-          searchHow = 'q=';
+          // if city is not a number
+          searchHow = 'q='; // search by city name
         } else {
-          searchHow = 'zip=';
+          searchHow = 'zip='; // search by zip code (US only)
         }
       }
       if (this.imperial == false) {
@@ -86,8 +86,6 @@ export class AppComponent {
             this.longitude = this.weatherData?.coord.lon;
             this.latitude = this.weatherData?.coord.lat;
             // console.log(response);
-            // console.log(response?.coord.lon);
-            // console.log(response?.coord.lat);
             if ((inputValue = ' ')) {
               // if using current location, set input to city name
               this.inputValue = this.weatherData?.name + '';
@@ -118,10 +116,12 @@ export class AppComponent {
       alert('Geolocation is not supported by this browser.');
     }
   };
+  // flips between imperial and metrics
   public flipSwitch = () => {
     this.imperial = !this.imperial;
     this.search(this.inputValue, false);
   };
+  // generates up to 5 day forecast, 3 hours each day
   public forecast = () => {
     const count = 7;
     const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitude}&lon=${this.longitude}&cnt=${count}&appid=${this.apiKey}`;
