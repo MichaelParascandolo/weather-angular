@@ -47,7 +47,7 @@ export class AppComponent {
 
   constructor(private http: HttpClient) {}
 
-  public search = (inputValue: any, currentLocation: boolean) => {
+  public search = (inputValue: string, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
       this.showLoading = true;
       // console.log(inputValue);
@@ -58,7 +58,7 @@ export class AppComponent {
         searchHow = searchHow =
           '&lat=' + this.latitude + '&lon=' + this.longitude;
       } else {
-        if (isNaN(inputValue)) {
+        if (isNaN(parseInt(inputValue))) {
           // does not working if we type cast inputValue
           searchHow = 'q=';
         } else {
