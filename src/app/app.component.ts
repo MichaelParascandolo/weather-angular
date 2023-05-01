@@ -113,8 +113,19 @@ export class AppComponent {
     this.imperial = !this.imperial;
     this.search(this.inputValue, false);
   };
-  ngOnInit() {
-    this.inputValue = 'Tuckerton';
-    this.search(this.inputValue, false);
-  }
+  public forecast = () => {
+    const count = 7;
+    const apiUrl = `api.openweathermap.org/data/2.5/forecast/daily?lat=44.34&lon=10.99&cnt=7&appid=6e21e21d00dac27b8e466eb450211833`;
+    this.http
+      .get<WeatherData>(apiUrl)
+      .pipe(
+        tap((response: WeatherData | undefined) => {
+          console.log(response);
+        }),
+        catchError((error: any) => {
+          return error;
+        })
+      )
+      .subscribe();
+  };
 }
