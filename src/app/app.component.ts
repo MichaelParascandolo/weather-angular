@@ -80,7 +80,6 @@ export class AppComponent {
         .get<WeatherData>(apiUrl)
         .pipe(
           tap((response: WeatherData | undefined) => {
-            this.showLoading = false;
             this.placeHolder = 'Search City | ZIP Code (US)';
             this.weatherData = response;
             this.longitude = this.weatherData?.coord.lon;
@@ -90,13 +89,14 @@ export class AppComponent {
               // if using current location, set input to city name
               this.inputValue = this.weatherData?.name + '';
             }
+            this.showLoading = false;
           }),
           catchError((error: any) => {
-            this.showLoading = false;
             console.log('SOMETHING WENT WRONG');
             this.placeHolder = 'CITY NOT FOUND!';
             this.inputValue = '';
             this.weatherData = undefined;
+            this.showLoading = false;
             return error;
           })
         )
