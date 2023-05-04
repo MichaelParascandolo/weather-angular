@@ -11,7 +11,11 @@
         (keyup.enter)="search(inputValue, false)"
       />
       <button (click)="search(inputValue, false)">
-        <i *ngIf="!showLoading" class="fa-solid fa-magnifying-glass fa-xl"></i>
+        <i
+          *ngIf="!showLoading"
+          class="fa-solid fa-magnifying-glass fa-2xl"
+          style="color: #2196f3"
+        ></i>
         <div *ngIf="showLoading" class="sbl-circ"></div>
       </button>
     </div>
@@ -19,7 +23,7 @@
       Current Location
       <i
         class="fa-solid fa-location-arrow fa-lg"
-        style="padding-left: 10px"
+        style="padding-left: 10px; color: #2196f3"
       ></i>
     </button>
     <!-- main weather content -->
