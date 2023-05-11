@@ -13,3 +13,8 @@ body {
   overflow-y: hidden;
   user-select: none;
 }
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}

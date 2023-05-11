@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -35,6 +35,8 @@ interface WeatherData {
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
+  @Input() removeCard: any;
+
   apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this later in .env
   weatherData: WeatherData | undefined;
   imperial: boolean = false;

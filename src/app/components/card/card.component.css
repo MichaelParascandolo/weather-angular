@@ -30,7 +30,7 @@ h2 {
   color: white;
   padding: 2em;
   border-radius: 20px;
-  width: 400px;
+  /* width: 400px; */
   border: 2px solid #2196f3;
   -webkit-box-shadow: 0px 15px 138px -8px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 15px 138px -8px rgba(0, 0, 0, 0.75);
