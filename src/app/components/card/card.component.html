@@ -1,6 +1,5 @@
 <div class="container">
   <div class="card">
-    <!-- <app-logo /> -->
     <!-- search bar and buttons -->
     <div class="search">
       <input
@@ -19,13 +18,25 @@
         <div *ngIf="showLoading" class="sbl-circ"></div>
       </button>
     </div>
-    <button class="currentLocation" (click)="getLocation(); inputValue = ''">
-      Current Location
-      <i
-        class="fa-solid fa-location-arrow fa-lg"
-        style="padding-left: 10px; color: #2196f3"
-      ></i>
-    </button>
+    <div style="display: flex">
+      <button (click)="addCard()" class="addRemove">
+        <i class="fa-solid fa-plus fa-xl"></i>
+      </button>
+      <button
+        style="margin-top: auto; margin-bottom: auto"
+        class="currentLocation"
+        (click)="getLocation(); inputValue = ''"
+      >
+        Current Location
+        <i
+          class="fa-solid fa-location-arrow fa-lg"
+          style="padding-left: 10px; color: #2196f3"
+        ></i>
+      </button>
+      <button (click)="removeCard()" class="addRemove">
+        <i class="fa-solid fa-minus fa-xl"></i>
+      </button>
+    </div>
     <!-- main weather content -->
     <div *ngIf="weatherData">
       <!-- <hr /> -->
@@ -83,8 +94,7 @@
           <span class="labels" data-on="°C" data-off="°F"></span>
         </label>
       </div>
-      <hr />
-      <button (click)="removeCard()">Remove</button>
+      <!-- <hr /> -->
       <!-- <button
           (click)="forecast()"
           class="currentLocation"

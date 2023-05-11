@@ -1,6 +1,8 @@
 <app-logo />
-<button (click)="addCard()">+</button>
-<button (click)="removeCard()">-</button>
 <main>
-  <app-card [removeCard]="removeCard" *ngFor="let card of cards" />
+  <app-card
+    [addCard]="addCard"
+    [removeCard]="removeCard"
+    *ngFor="let card of cards"
+  />
 </main>

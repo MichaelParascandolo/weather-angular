@@ -5,8 +5,10 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  cards: number[] = [0, 0];
+  cards: number[] = [0];
+
   public addCard = () => {
+    console.log('adding card');
     this.cards.push(Math.floor(Math.random() * 100));
   };
 
