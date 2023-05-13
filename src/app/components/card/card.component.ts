@@ -36,6 +36,7 @@ interface WeatherData {
 })
 export class CardComponent {
   @Input() addCard: any;
+  @Input() removeCard: any;
   @Input() index: number | undefined;
 
   apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this later in .env
@@ -56,7 +57,6 @@ export class CardComponent {
     this.imperial = value;
     this.search(this.inputValue, false);
   }
-  @Input() removeCard: any;
 
   public search = (inputValue: string, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
@@ -95,7 +95,6 @@ export class CardComponent {
             this.weatherData = response;
             this.longitude = this.weatherData?.coord.lon;
             this.latitude = this.weatherData?.coord.lat;
-            // console.log(response);
             if ((inputValue = ' ')) {
               // if using current location, set input to city name
               this.inputValue = this.weatherData?.name + '';
@@ -111,10 +110,10 @@ export class CardComponent {
             return error;
           })
         )
-
         .subscribe();
     }
   };
+
   // gets the users location from the browser
   public getLocation = () => {
     if (navigator.geolocation) {
