@@ -76,17 +76,7 @@
             Gust: {{ weatherData.wind.gust | number : "1.0-0" }}{{ speedUnit }}
           </span>
         </div>
-        <!-- unit slider -->
-        <label class="toggle">
-          <input
-            type="checkbox"
-            id="check"
-            name="check"
-            (change)="flipSwitch()"
-          />
-          <span class="slider"></span>
-          <span class="labels" data-on="°C" data-off="°F"></span>
-        </label>
+        <app-slider (newItemEvent)="handleNewItemEvent($event)" />
       </div>
       <!-- <hr /> -->
       <!-- <button

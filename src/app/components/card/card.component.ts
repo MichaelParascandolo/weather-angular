@@ -35,7 +35,6 @@ interface WeatherData {
   styleUrls: ['./card.component.css'],
 })
 export class CardComponent {
-  @Input() removeCard: any;
   @Input() addCard: any;
   @Input() index: number | undefined;
 
@@ -51,6 +50,13 @@ export class CardComponent {
   speedUnit = '';
 
   constructor(private http: HttpClient) {}
+
+  // accepts output from the slider component
+  handleNewItemEvent(value: boolean) {
+    this.imperial = value;
+    this.search(this.inputValue, false);
+  }
+  @Input() removeCard: any;
 
   public search = (inputValue: string, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
@@ -121,11 +127,7 @@ export class CardComponent {
       alert('Geolocation is not supported by this browser.');
     }
   };
-  // flips between imperial and metrics
-  public flipSwitch = () => {
-    this.imperial = !this.imperial;
-    this.search(this.inputValue, false);
-  };
+
   // generates up to 5 day forecast, 3 hours each day
   public forecast = () => {
     const count = 7;
