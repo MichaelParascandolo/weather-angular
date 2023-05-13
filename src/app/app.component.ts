@@ -12,10 +12,10 @@ export class AppComponent {
     this.cards.push(Math.floor(Math.random() * 100));
   };
 
-  public removeCard = () => {
+  public removeCard = (i: number) => {
     console.log('removing card');
     if (this.cards.length > 1) {
-      this.cards.splice(0, 1);
+      this.cards.splice(i, 1);
     }
   };
 }

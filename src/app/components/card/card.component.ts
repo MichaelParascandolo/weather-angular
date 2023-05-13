@@ -37,6 +37,7 @@ interface WeatherData {
 export class CardComponent {
   @Input() removeCard: any;
   @Input() addCard: any;
+  @Input() index: number | undefined;
 
   apiKey: string = '6e21e21d00dac27b8e466eb450211833'; // hide this later in .env
   weatherData: WeatherData | undefined;

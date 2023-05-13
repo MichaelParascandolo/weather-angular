@@ -3,7 +3,8 @@
   <app-card
     [addCard]="addCard"
     [removeCard]="removeCard"
-    *ngFor="let card of cards"
+    [index]="i"
+    *ngFor="let card of cards; let i = index"
   />
   <div style="width: 100%; display: flex; justify-content: center">
     <p (click)="addCard()" class="addCard">

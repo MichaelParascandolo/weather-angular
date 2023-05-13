@@ -19,9 +19,6 @@
       </button>
     </div>
     <div style="display: flex">
-      <!-- <button (click)="addCard()" class="addRemove">
-        <i class="fa-solid fa-plus fa-xl"></i>
-      </button> -->
       <button
         style="margin-top: auto; margin-bottom: auto"
         class="currentLocation"
@@ -33,9 +30,6 @@
           style="padding-left: 10px; color: #2196f3"
         ></i>
       </button>
-      <!-- <button (click)="removeCard()" class="addRemove">
-        <i class="fa-solid fa-minus fa-xl"></i>
-      </button> -->
     </div>
     <!-- main weather content -->
     <div *ngIf="weatherData">
@@ -105,6 +99,6 @@
       </div> -->
       <!-- <app-footer /> -->
     </div>
-    <p class="delete" (click)="removeCard()">Remove Card</p>
+    <p *ngIf="index" class="delete" (click)="removeCard(index)">Remove Card</p>
   </div>
 </div>
