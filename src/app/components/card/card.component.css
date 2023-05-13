@@ -53,6 +53,17 @@ button {
   color: white;
   outline: none;
 }
+.delete {
+  font-size: 12px;
+  margin-bottom: -20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+.delete:hover {
+  color: red;
+  transition: all 0.3s ease-in-out;
+  cursor: pointer;
+}
 .currentLocation {
   display: flex;
   align-items: center;

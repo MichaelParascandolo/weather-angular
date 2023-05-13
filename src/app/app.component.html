@@ -5,4 +5,10 @@
     [removeCard]="removeCard"
     *ngFor="let card of cards"
   />
+  <div style="width: 100%; display: flex; justify-content: center">
+    <p (click)="addCard()" class="addCard">
+      <i class="fa-solid fa-plus fa-lg"></i>
+    </p>
+  </div>
 </main>
+<!-- <app-footer /> -->
