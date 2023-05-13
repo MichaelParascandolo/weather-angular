@@ -26,8 +26,8 @@ main {
 }
 .addCard {
   background: #000000d0;
-  padding: 1em;
+  padding: 0.5rem;
   color: white;
-  border-radius: 20px;
+  border-radius: 10px;
   border: 2px solid #2196f3;
 }

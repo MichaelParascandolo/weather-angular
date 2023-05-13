@@ -22,5 +22,6 @@ span {
 @media only screen and (max-width: 600px) {
   .title {
     font-size: 40px;
+    width: 300px;
   }
 }
