@@ -58,7 +58,7 @@ export class CardComponent {
     this.search(this.inputValue, false);
   }
 
-  public search = (inputValue: string, currentLocation: boolean) => {
+  public search = async (inputValue: string, currentLocation: boolean) => {
     if (inputValue != '' || currentLocation) {
       // makes sure input is not null and current location was not pressed
       this.showLoading = true;
@@ -99,18 +99,18 @@ export class CardComponent {
               // if using current location, set input to city name
               this.inputValue = this.weatherData?.name + '';
             }
-            this.showLoading = false;
           }),
           catchError((error: any) => {
             console.log('SOMETHING WENT WRONG');
             this.placeHolder = 'CITY NOT FOUND!';
             this.inputValue = '';
             this.weatherData = undefined;
-            this.showLoading = false;
             return error;
           })
         )
         .subscribe();
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+      this.showLoading = false;
     }
   };
 
