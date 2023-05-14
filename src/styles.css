@@ -26,8 +26,14 @@ main {
 }
 .addCard {
   background: #000000d0;
+  opacity: 0.75;
   padding: 0.5rem;
   color: white;
   border-radius: 10px;
-  border: 2px solid #2196f3;
+  border: 1px solid #2196f3;
+}
+.addCard:hover {
+  background-color: #2196f3;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
 }
