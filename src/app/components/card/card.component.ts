@@ -101,7 +101,6 @@ export class CardComponent {
             }
           }),
           catchError((error: any) => {
-            console.log('SOMETHING WENT WRONG');
             this.placeHolder = 'CITY NOT FOUND!';
             this.inputValue = '';
             this.weatherData = undefined;
@@ -128,19 +127,19 @@ export class CardComponent {
   };
 
   // generates up to 5 day forecast, 3 hours each day
-  public forecast = () => {
-    const count = 7;
-    const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitude}&lon=${this.longitude}&cnt=${count}&appid=${this.apiKey}`;
-    this.http
-      .get<any>(apiUrl)
-      .pipe(
-        tap((response: any) => {
-          console.log(response);
-        }),
-        catchError((error: any) => {
-          return error;
-        })
-      )
-      .subscribe();
-  };
+  // public forecast = () => {
+  //   const count = 7;
+  //   const apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${this.latitude}&lon=${this.longitude}&cnt=${count}&appid=${this.apiKey}`;
+  //   this.http
+  //     .get<any>(apiUrl)
+  //     .pipe(
+  //       tap((response: any) => {
+  //         console.log(response);
+  //       }),
+  //       catchError((error: any) => {
+  //         return error;
+  //       })
+  //     )
+  //     .subscribe();
+  // };
 }

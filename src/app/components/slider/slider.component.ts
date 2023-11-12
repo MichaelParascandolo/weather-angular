@@ -11,6 +11,5 @@ export class SliderComponent {
   public flip = () => {
     this.imperial = !this.imperial;
     this.newItemEvent.emit(this.imperial);
-    // console.log('outputting ' + this.imperial);
   };
 }
